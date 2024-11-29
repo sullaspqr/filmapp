@@ -72,5 +72,15 @@ namespace filmapp.Controllers
             Response.Headers.Add("Allow", "GET, POST, OPTIONS");
             return Ok();
         }
+        [HttpOptions("{id}")]
+        public IActionResult Options(int id)
+        {
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
+
+            return Ok(); // Válasz a CORS pre-flight kérésre
+        }
+
     }
 }
